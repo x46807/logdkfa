@@ -15,6 +15,7 @@ $loglist = "Security","System","Application","Microsoft-Windows-PowerShell/Opera
 #Don't specify a category if specifying subcategories
 #Defaults below are set to MS Audit Policy "Stronger Recommendations" best practices:
 #https://github.com/MicrosoftDocs/windowsserverdocs/blob/master/WindowsServerDocs/identity/ad-ds/plan/security-best-practices/Audit-Policy-Recommendations.md
+#Future plan is to wrap this into a config file and upload different types of config files to the repo
 $audit_settings = @(
     ,@("Account Logon","*","enable","enable")
 	,@("","Computer Account Management","enable","enable")
@@ -59,15 +60,12 @@ Invoke-Expression -Command "auditpol /backup /file:$new_path\audit_backup.csv"
 
 foreach ($line in $audit_settings) {
 if ($line[1] -eq "*") {
-[System.Collections.ArrayList]$audit_line = $line
-$audit_line.RemoveAt(1)
+
 $subcategory = ""
 } else {
 $subcategory = '/subcategory:"{0}"' -f $line[1]
 }
 if ($line[0] -eq "") {
-[System.Collections.ArrayList]$audit_line = $line
-$audit_line.RemoveAt(0)
 $category = ""
 } else {
 $category = '/category:"{0}"' -f $line[0]
