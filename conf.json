@@ -1,0 +1,32 @@
+[
+{
+"file_auditing": {
+"comment": "Set to true to enable file auditing, specify the config file path",
+"enabled": "true",
+"path": ".\\file_audit.conf"
+}
+},
+
+{
+"registry_auditing": {
+"comment": "Set to true to enable registry auditing.  Set the path to the file containing the registry keys to audit",
+"enabled": "true",
+"path": ".\\reg_audit.conf"
+}
+},
+{
+"powershell_logging": {
+"comment": "Set to true to enable PowerShell logging.  Set output path for script block transcriptions",
+"enabled": "true",
+"path": "C:\\Temp\\ps_blocks" 
+}
+},
+{
+"special_logging": {
+"comment": "Set to true to enable logging of non-standard Windows logs.  Set the path to the config file",
+"enabled": "false",
+"path": ".\\special_logs.conf"
+}
+}
+]
+
